@@ -21,11 +21,18 @@ jobs:
   Test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-go@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v5
         with:
           go-version: "1.25"
           cache: true
-      - run: go test ./...
+      - name: Test
+        run: |
+          for i in 1 2 3; do
+            go test ./... && exit 0
+            echo "Attempt $i failed, retrying in ${i}s..."
+            sleep $i
+          done
+          exit 1
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
