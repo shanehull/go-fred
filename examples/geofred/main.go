@@ -32,6 +32,8 @@ func main() {
 		fred.WithRegionType(group.RegionType),
 		fred.WithRegionalDate(group.MaxDate),
 		fred.WithRegionalFrequency("a"),
+		fred.WithMapUnits(group.Units),
+		fred.WithSeason(group.Season),
 	)
 	if err != nil {
 		log.Fatal(err)
