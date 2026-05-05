@@ -7,7 +7,6 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
 	"github.com/shanehull/go-fred"
@@ -37,7 +36,4 @@ func main() {
 	}
 
 	fmt.Printf("\n%d observations retrieved\n", len(obs))
-	if os.Getenv("FRED_API_KEY") == "" {
-		fmt.Println("Set $FRED_API_KEY to use your own key.")
-	}
 }
