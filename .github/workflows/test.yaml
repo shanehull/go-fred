@@ -4,9 +4,15 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '**.go'
+      - 'go.mod'
   pull_request:
     branches:
       - main
+    paths:
+      - '**.go'
+      - 'go.mod'
 
 permissions:
   contents: read
