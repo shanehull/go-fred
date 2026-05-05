@@ -162,3 +162,4 @@ See [examples/](examples/) for runnable programs:
 - [releases](examples/releases/main.go) — release info and dates
 - [tags](examples/tags/main.go) — popular tags and related tags
 - [geofred](examples/geofred/main.go) — map metadata and regional data
+- [sources](examples/sources/main.go) — data sources and their releases
