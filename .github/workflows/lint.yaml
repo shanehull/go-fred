@@ -18,6 +18,6 @@ jobs:
           go-version: "1.25"
           cache: true
       - name: Lint
-		uses: golangci/golangci-lint-action@v10
-		with:
-			version: v2.12.1
+        uses: golangci/golangci-lint-action@v10
+        with:
+          version: v2.12.1
