@@ -68,4 +68,6 @@ FRED allows 120 req/min. The client does not enforce this — callers manage the
 
 - Tests in `fred_test` package (external test package).
 - Test functions named `Test<MethodName>`.
+- When adding an API method, also add a test (`*_test.go`), an example (`examples/`), and update the API coverage table in `README.md`.
+- Semantic commits: use conventional commit prefixes for release-please. `feat:` bumps minor (pre-1.0), `fix:` bumps patch. `docs:`, `ci:`, `chore:` don't bump version but appear in changelog.
 - Known test series: `DGS20` (20-year Treasury), `SMU56000000500000001A` (GeoFRED), `WIPCPI` (GeoFRED data), release `53` (GDP), category `1` (Production & Business Activity), source `1`, tag `"gdp"`/`"business"`.
