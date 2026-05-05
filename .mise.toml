@@ -1,0 +1,7 @@
+[tools]
+go = "1.25.4"
+golangci-lint = "2.12.1"
+
+[env]
+# Set your FRED API key for running tests
+# FRED_API_KEY = "your-key-here"
