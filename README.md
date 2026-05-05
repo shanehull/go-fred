@@ -1,8 +1,7 @@
 # go-fred
 
 <p align="center">
-  <img src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_LightBlue.png" height="80" alt="Go"><br>
-  <img src="https://fred.stlouisfed.org/images/FRED_Logo_Home_Page.svg" height="48" alt="FRED" style="background:#fff;padding:6px 10px;border-radius:6px">
+  <img src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_LightBlue.png" height="80" alt="Go">
 </p>
 
 [![Go Reference](https://pkg.go.dev/badge/github.com/shanehull/go-fred.svg)](https://pkg.go.dev/github.com/shanehull/go-fred)
