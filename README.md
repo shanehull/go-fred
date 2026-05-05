@@ -1,7 +1,8 @@
 # go-fred
 
 <p align="center">
-  <img src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_LightBlue.png" height="80" alt="Go"><br>
+  <img src="https://go.dev/blog/go-brand/Go-Logo/PNG/Go-Logo_LightBlue.png" height="80" alt="Go">
+  <br>
   <img src="assets/fred-logo.svg" height="48" alt="FRED">
 </p>
 
