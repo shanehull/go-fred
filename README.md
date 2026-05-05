@@ -64,6 +64,8 @@ client, _ := fred.New(fred.WithAPIKey("your-key"))
 
 ### Observations
 
+FRED series contain time-indexed data points. Each observation has a date, value, and metadata. Missing values use `"."` in the API and become `IsNA=true` in the response.
+
 ```go
 obs, err := client.GetSeriesObservations(ctx, "DGS20",
     fred.WithObservationStart(time.Date(2024, 1, 1, 0, 0, 0, 0, time.UTC)),
@@ -71,38 +73,49 @@ obs, err := client.GetSeriesObservations(ctx, "DGS20",
     fred.WithUnits("lin"),
     fred.WithFrequency("m"),
 )
+
+// Get metadata about a series
+info, _ := client.GetSeriesInfo(ctx, "DGS20")
 ```
 
-### Vintage Data
+### Vintage Data (ALFRED)
+
+FRED stores all revisions — every time a data point is updated, the previous value is preserved. This is called ALFRED (Archival FRED). Each observation has three dates: `date` (the period), `realtime_start` (first date this value was reported), and `realtime_end` (last date before a revision).
 
 ```go
-// All releases (every revision)
+// All releases: every revision for every date
 all, _ := client.GetSeriesAllReleases(ctx, "DGS20",
     fred.WithRealtimeStart(time.Date(2023, 1, 1, 0, 0, 0, 0, time.UTC)),
 )
 
-// First published value for each date
+// First release: the earliest published value for each date
 first, _ := client.GetSeriesFirstRelease(ctx, "DGS20")
 
-// As known on a specific date
+// As-of: the data as it was known on a specific date
 asof, _ := client.GetSeriesAsOf(ctx, "DGS20", time.Date(2023, 6, 1, 0, 0, 0, 0, time.UTC))
+
+// Vintage dates: all dates when this series was revised
+dates, _ := client.GetSeriesVintageDates(ctx, "DGS20")
 ```
 
 ### Search
 
+Search FRED by keyword, filter by tags, or browse series belonging to a release or category. Search endpoints auto-paginate — set `limit=0` for all results.
+
 ```go
-// Search auto-paginates. Set limit=0 for all results.
 results, _ := client.SearchSeries(ctx, "real GDP",
     fred.WithLimit(50),
     fred.WithOrderBy(fred.OrderByPopularity),
 )
 
-// Filter by release or category
+// Series belonging to a release or category
 series, _ := client.GetReleaseSeries(ctx, 53, fred.WithLimit(100))
 series, _ := client.GetCategorySeries(ctx, 1, fred.WithLimit(100))
 ```
 
 ### Categories, Releases, Sources, Tags
+
+FRED organizes data into categories (topics), releases (publications), sources (data providers), and tags (keywords). These form the taxonomy for discovering series.
 
 ```go
 cat, _  := client.GetCategory(ctx, 1)
@@ -113,6 +126,8 @@ tags, _ := client.GetTags(ctx, fred.WithTagLimit(20))
 ```
 
 ### GeoFRED
+
+GeoFRED provides geographic data — maps at the state, county, MSA, and country level. Get map metadata, then pull regional data by series group.
 
 ```go
 group, _ := client.GetSeriesGroup(ctx, "SMU56000000500000001A")
