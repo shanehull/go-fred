@@ -158,3 +158,7 @@ See [examples/](examples/) for runnable programs:
 - [observations](examples/series/main.go) — fetch and display series data
 - [search](examples/search/main.go) — search for series
 - [vintage](examples/vintage/main.go) — compare first vs latest release values
+- [categories](examples/categories/main.go) — explore the category tree
+- [releases](examples/releases/main.go) — release info and dates
+- [tags](examples/tags/main.go) — popular tags and related tags
+- [geofred](examples/geofred/main.go) — map metadata and regional data
