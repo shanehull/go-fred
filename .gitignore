@@ -20,3 +20,6 @@ Thumbs.db
 # Go
 coverage.out
 vendor/
+
+# mise local overrides
+mise.local.toml
