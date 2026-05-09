@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.1](https://github.com/shanehull/go-fred/compare/v0.1.0...v0.1.1) (2026-05-09)
+
+
+### Bug Fixes
+
+* add sane default timeout ([#11](https://github.com/shanehull/go-fred/issues/11)) ([118d8ed](https://github.com/shanehull/go-fred/commit/118d8ed501c08b6e7b40fb6fd97195d2767df83b))
+* validate required params in GetRegionalData ([#9](https://github.com/shanehull/go-fred/issues/9)) ([9b4d493](https://github.com/shanehull/go-fred/commit/9b4d493b093994c04d4488a46a1034ebe22ca3a0))
+
 ## 0.1.0 (2026-05-05)
 
 
