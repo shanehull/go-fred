@@ -1,6 +1,6 @@
 // Package fred provides a client for the Federal Reserve Economic Data (FRED) API.
 //
-// It covers all 34 FRED API endpoints. Zero dependencies beyond Go stdlib.
+// It covers all FRED API endpoints. Zero dependencies beyond Go stdlib.
 //
 // Usage:
 //
@@ -15,6 +15,12 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
+)
+
+const (
+	defaultBaseURL = "https://api.stlouisfed.org"
+	defaultTimeout = 30 * time.Second
 )
 
 // Client is a FRED API client. Must be constructed via New.
@@ -32,8 +38,10 @@ type Client struct {
 // New creates a new FRED API client.
 func New(opts ...ClientOption) (*Client, error) {
 	c := &Client{
-		httpClient: http.DefaultClient,
-		baseURL:    "https://api.stlouisfed.org",
+		httpClient: &http.Client{
+			Timeout: defaultTimeout,
+		},
+		baseURL: defaultBaseURL,
 	}
 
 	if key := os.Getenv("FRED_API_KEY"); key != "" {
@@ -64,15 +72,18 @@ func WithAPIKey(key string) ClientOption {
 	}
 }
 
-// WithHTTPClient sets a custom HTTP client (useful for testing with httptest).
+// WithHTTPClient sets a custom HTTP client.
 func WithHTTPClient(hc *http.Client) ClientOption {
 	return func(c *Client) error {
+		if hc == nil {
+			return fmt.Errorf("fred: http client cannot be nil")
+		}
 		c.httpClient = hc
 		return nil
 	}
 }
 
-// WithBaseURL sets a custom base URL (useful for testing).
+// WithBaseURL sets a custom base URL.
 func WithBaseURL(url string) ClientOption {
 	return func(c *Client) error {
 		c.baseURL = url
