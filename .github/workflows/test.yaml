@@ -1,12 +1,6 @@
 name: Test
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - '**.go'
-      - 'go.mod'
   pull_request:
     branches:
       - main
