@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/shanehull/go-fred/compare/v0.1.1...v0.1.2) (2026-05-10)
+
+
+### Bug Fixes
+
+* remove client-side mandatory checks for GetRegionalData ([c59f366](https://github.com/shanehull/go-fred/commit/c59f366d8255cf56ac0727e314f5dcf3d7bd0f3f))
+
 ## [0.1.1](https://github.com/shanehull/go-fred/compare/v0.1.0...v0.1.1) (2026-05-09)
 
 
