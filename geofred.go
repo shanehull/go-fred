@@ -113,22 +113,6 @@ func (c *Client) GetRegionalData(ctx context.Context, opts ...RegionalDataOption
 		opt(p)
 	}
 
-	if p.seriesGroup == "" {
-		return nil, fmt.Errorf("fred: WithSeriesGroup is required for GetRegionalData")
-	}
-	if p.regionType == "" {
-		return nil, fmt.Errorf("fred: WithRegionType is required for GetRegionalData")
-	}
-	if p.date == "" {
-		return nil, fmt.Errorf("fred: WithRegionalDate is required for GetRegionalData")
-	}
-	if p.season == "" {
-		return nil, fmt.Errorf("fred: WithSeason is required for GetRegionalData")
-	}
-	if p.units == "" {
-		return nil, fmt.Errorf("fred: WithMapUnits is required for GetRegionalData")
-	}
-
 	params := url.Values{}
 	applyRegionalDataOptions(p, params)
 
